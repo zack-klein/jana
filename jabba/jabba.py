@@ -102,7 +102,7 @@ def put_aws_secrets_manager_secret(
 
 
 # GCP
-def create_gcp_secret_manager_secret(secret_name, secret_value, project):
+def put_gcp_secret_manager_secret(secret_name, secret_value, project):
     """
     Create a secret in GCP Secret Manager. See:
     https://cloud.google.com/secret-manager/docs/creating-and-accessing-secrets#create_a_secret
@@ -126,7 +126,7 @@ def create_gcp_secret_manager_secret(secret_name, secret_value, project):
 
 SECRET_PUT_DISPATCHER = {
     "aws-secretsmanager": put_aws_secrets_manager_secret,
-    "gcp-secretmanager": create_gcp_secret_manager_secret,
+    "gcp-secretmanager": put_gcp_secret_manager_secret,
 }
 
 
