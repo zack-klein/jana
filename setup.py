@@ -7,7 +7,7 @@ def read(fname):
 
 
 setup(
-    name="jabba",
+    name="jabba-secrets",
     author="Zack Klein",
     author_email="klein.zachary.j@gmail.com",
     description=("An easy way to use secrets in (several of) the cloud(s)."),
