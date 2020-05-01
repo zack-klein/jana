@@ -3,3 +3,5 @@ flake8
 black
 bandit
 chronos-cli
+google-cloud-secret-manager
+boto3
