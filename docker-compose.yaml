@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  service:
+    build: .
+    command: bash
+    # ports:
+      # - 5000:5000
+    volumes:
+      - ${HOME}/.aws:/home/debian/.aws  # AWS Creds
+      - ${HOME}/.config/gcloud:/home/debian/.config/gcloud  # GCloud Creds
+      - ./:/home/debian/service  # This dir to workdir
