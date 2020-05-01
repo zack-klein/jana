@@ -246,8 +246,25 @@ def update_aws_secrets_manager_secret(
     )
 
 
+# GCP
+def update_gcp_secrets_manager_secret(
+    secret_name, secret_value, project
+):
+    """
+    Update a secret in GCP Secret Manager.
+
+    :param str secret_name: Name of the secret.
+    :param str region: AWS Region.
+    """
+    client = secretmanager.SecretManagerServiceClient()
+    parent = client.secret_path(project, secret_name)
+    secret_bytes = secret_value.encode('UTF-8')
+    client.add_secret_version(parent, {'data': secret_bytes})
+
+
 SECRET_UPDATE_DISPATCHER = {
     "aws-secretsmanager": update_aws_secrets_manager_secret,
+    "gcp-secretmanager": update_gcp_secrets_manager_secret,
 }
 
 
