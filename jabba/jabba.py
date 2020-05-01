@@ -101,8 +101,32 @@ def put_aws_secrets_manager_secret(
     )
 
 
+# GCP
+def create_gcp_secret_manager_secret(secret_name, secret_value, project):
+    """
+    Create a secret in GCP Secret Manager. See:
+    https://cloud.google.com/secret-manager/docs/creating-and-accessing-secrets#create_a_secret
+
+    :param str secret_name: The name of the secret to put.
+    :param str secret_value: The value of the secret to put.
+    :param str project: The name of the project the secret belongs to.
+    """
+    client = secretmanager.SecretManagerServiceClient()
+    project_parent = client.project_path(project)
+    response = client.create_secret(project_parent, secret_name, {
+        'replication': {
+            'automatic': {},
+        },
+    })
+    secret_parent = client.secret_path(project, secret_name)
+    secret_bytes = secret_value.encode('UTF-8')
+    client.add_secret_version(secret_parent, {'data': secret_bytes})
+
+
+
 SECRET_PUT_DISPATCHER = {
     "aws-secretsmanager": put_aws_secrets_manager_secret,
+    "gcp-secretmanager": create_gcp_secret_manager_secret,
 }
 
 
