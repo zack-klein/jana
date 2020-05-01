@@ -1,16 +1,29 @@
-# Microservice Repository
+# Jabba
 
-High level of the purpose this repository serves.
+An easy way to use secrets in (several of) the cloud(s).
+
+# Installation
+
+TODO
+
+# Usage
+```python
+>> import jabba
+>> secret_string = jabba.fetch_string(
+...    "aws-secretsmanager",
+...    "my-secret-name",
+...)
+>> print(secret_string)
+You'll never guess me!
+```
 
 # Development
 
 Development starts by running (or something similar):
 ```bash
-docker-compose up
-# or
-docker-compose run --rm service
+docker-compose run --rm jabba
 ```
 
 # CI
 
-What happens in the build pipeline? Do any artifacts get deployed?
+TODO

@@ -1,5 +1,8 @@
 set -e
 
+echo "Testing pip..."
+pip check
+
 echo "Formatting code..."
 black . --line-length 79
 
