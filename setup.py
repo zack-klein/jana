@@ -15,6 +15,6 @@ setup(
     packages=["jabba"],
     long_description=read("README.md"),
     use_scm_version=True,
-    setup_requires=['setuptools_scm'],
-    url="https://github.com/zack-klein/jabba"
+    setup_requires=["setuptools_scm"],
+    url="https://github.com/zack-klein/jabba",
 )
