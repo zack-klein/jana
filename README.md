@@ -1,6 +1,6 @@
 # Jabba
 
-Jabba is a tool for secret management for lazy people - it's an easy way to use secrets across (several of) the cloud(s).
+Jabba is a tool for secret management for lazy people - it's an easy way to CRUD secrets across (several of) the cloud(s).
 
 # Installation
 
