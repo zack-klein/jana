@@ -86,7 +86,9 @@ def put_aws_secrets_manager_secret(
     secret_name, secret_value, region="us-east-1", **create_secret_args
 ):
     """
-    Put a secret into AWS Secrets Manager.
+    Put a secret into AWS Secrets Manager. You can pass arbitraty creation
+    args to this, see:
+    https://boto3.amazonaws.com/v1/documentation/api/1.9.46/reference/services/secretsmanager.html#SecretsManager.Client.create_secret
 
     :param str secret_name: Name of the secret.
     :param str secret_value: Value of the secret.
