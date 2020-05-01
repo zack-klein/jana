@@ -178,8 +178,23 @@ def drop_aws_secrets_manager_secret(
     )
 
 
+def drop_gcp_secrets_manager_secret(
+    secret_name, project
+):
+    """
+    Drop a secret from GCP Secret Manager.
+
+    :param str secret_name: Name of the secret.
+    :param str project: Name of the GCP project.
+    """
+    client = secretmanager.SecretManagerServiceClient()
+    name = client.secret_path(project, secret_name)
+    client.delete_secret(name)
+
+
 SECRET_DROP_DISPATCHER = {
     "aws-secretsmanager": drop_aws_secrets_manager_secret,
+    "gcp-secretmanager": drop_gcp_secrets_manager_secret,
 }
 
 
