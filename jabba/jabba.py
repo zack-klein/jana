@@ -140,18 +140,16 @@ def put_secret(provider_service, *args, **kwargs):
     :raise NotImplementedError: If a function for the provider_service is
         invalid, it raises this error.
     """
-    fetch_function = SECRET_PUT_DISPATCHER.get(provider_service)
+    put_function = SECRET_PUT_DISPATCHER.get(provider_service)
 
-    if not fetch_function:
+    if not put_function:
         raise NotImplementedError(
             f"Provider-Service combination: '{provider_service}' is not "
-            "supported! Currently supported for fetching secrets are: "
+            "supported! Currently supported for putting secrets are: "
             f"{', '.join(list(SECRET_PUT_DISPATCHER.keys()))}"
         )
 
-    secret = fetch_function(*args, **kwargs)
-
-    return secret
+    put_function(*args, **kwargs)
 
 
 # Functions for dropping existing secrets.
@@ -206,18 +204,16 @@ def drop_secret(provider_service, *args, **kwargs):
     :raise NotImplementedError: If a function for the provider_service is
         invalid, it raises this error.
     """
-    fetch_function = SECRET_DROP_DISPATCHER.get(provider_service)
+    drop_function = SECRET_DROP_DISPATCHER.get(provider_service)
 
-    if not fetch_function:
+    if not drop_function:
         raise NotImplementedError(
             f"Provider-Service combination: '{provider_service}' is not "
-            "supported! Currently supported for fetching secrets are: "
+            "supported! Currently supported for dropping secrets are: "
             f"{', '.join(list(SECRET_DROP_DISPATCHER.keys()))}"
         )
 
-    secret = fetch_function(*args, **kwargs)
-
-    return secret
+    drop_function(*args, **kwargs)
 
 
 # Functions for updating existing secrets.
@@ -274,15 +270,13 @@ def update_secret(provider_service, *args, **kwargs):
     :raise NotImplementedError: If a function for the provider_service is
         invalid, it raises this error.
     """
-    fetch_function = SECRET_UPDATE_DISPATCHER.get(provider_service)
+    update_function = SECRET_UPDATE_DISPATCHER.get(provider_service)
 
-    if not fetch_function:
+    if not update_function:
         raise NotImplementedError(
             f"Provider-Service combination: '{provider_service}' is not "
-            "supported! Currently supported for fetching secrets are: "
+            "supported! Currently supported for updating secrets are: "
             f"{', '.join(list(SECRET_UPDATE_DISPATCHER.keys()))}"
         )
 
-    secret = fetch_function(*args, **kwargs)
-
-    return secret
+    update_function(*args, **kwargs)
