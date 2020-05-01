@@ -1,5 +1,9 @@
 # Jabba
 
+[![Build Status](https://travis-ci.com/zack-klein/jabba.svg?branch=master)](https://travis-ci.com/zack-klein/snowbird) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+
+
+
 Jabba is a tool for secret management for lazy people - it's an easy way to CRUD secrets across (several of) the cloud(s).
 
 # Installation
