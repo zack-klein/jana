@@ -4,7 +4,9 @@ Jabba is a tool for secret management for lazy people - it's an easy way to CRUD
 
 # Installation
 
-TODO
+```bash
+pip install jabba-secrets
+```
 
 # Usage
 
