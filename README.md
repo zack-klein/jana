@@ -23,7 +23,6 @@ Fetching secrets:
 ...)
 >>> print(secret_string_aws)
 You'll never guess me!
->>>
 >>> secret_string_gcp = jabba.fetch_secret(
 ...  "gcp-secretmanager",
 ...  "my-secret-name",
@@ -42,11 +41,42 @@ Putting secrets:
 ...    "nuclear_codes",
 ...    "boo00oom",
 ...)
->>>
 >>> jabba.put_secret(
 ...    "gcp-secretmanager",
 ...    "answer_to_life",
 ...    "42",
+...    "my-gcp-project",
+...    "secret-version-2",
+...)
+```
+
+Dropping secrets:
+```python
+>>> import jabba
+>>> jabba.drop_secret(
+...  "aws-secretsmanager",
+...  "my-secret-name",
+...)
+>>> jabba.drop_secret(
+...  "gcp-secretmanager",
+...  "my-secret-name",
+...  "my-gcp-project",
+...  "secret-version-1",
+...)
+```
+
+Updating secrets:
+```python
+>>> import jabba
+>>> jabba.update_secret(
+...    "aws-secretsmanager",
+...    "nuclear_codes",
+...    "boo00oom2",
+...)
+>>> jabba.put_secret(
+...    "gcp-secretmanager",
+...    "answer_to_life",
+...    "Who freakin' knows!",
 ...    "my-gcp-project",
 ...    "secret-version-2",
 ...)
