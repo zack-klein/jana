@@ -1,11 +1,11 @@
 version: "3.7"
 services:
-  service:
+  jabba:
     build: .
     command: bash
-    # ports:
-      # - 5000:5000
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/home/debian/.config/gcloud/localdev.json
     volumes:
       - ${HOME}/.aws:/home/debian/.aws  # AWS Creds
       - ${HOME}/.config/gcloud:/home/debian/.config/gcloud  # GCloud Creds
-      - ./:/home/debian/service  # This dir to workdir
+      - ./:/home/debian/jabba  # This dir to workdir
