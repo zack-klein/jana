@@ -113,15 +113,12 @@ def put_gcp_secret_manager_secret(secret_name, secret_value, project):
     """
     client = secretmanager.SecretManagerServiceClient()
     project_parent = client.project_path(project)
-    response = client.create_secret(project_parent, secret_name, {
-        'replication': {
-            'automatic': {},
-        },
-    })
+    client.create_secret(
+        project_parent, secret_name, {"replication": {"automatic": {}}}
+    )
     secret_parent = client.secret_path(project, secret_name)
-    secret_bytes = secret_value.encode('UTF-8')
-    client.add_secret_version(secret_parent, {'data': secret_bytes})
-
+    secret_bytes = secret_value.encode("UTF-8")
+    client.add_secret_version(secret_parent, {"data": secret_bytes})
 
 
 SECRET_PUT_DISPATCHER = {
@@ -178,9 +175,7 @@ def drop_aws_secrets_manager_secret(
     )
 
 
-def drop_gcp_secrets_manager_secret(
-    secret_name, project
-):
+def drop_gcp_secrets_manager_secret(secret_name, project):
     """
     Drop a secret from GCP Secret Manager.
 
@@ -247,9 +242,7 @@ def update_aws_secrets_manager_secret(
 
 
 # GCP
-def update_gcp_secrets_manager_secret(
-    secret_name, secret_value, project
-):
+def update_gcp_secrets_manager_secret(secret_name, secret_value, project):
     """
     Update a secret in GCP Secret Manager.
 
@@ -258,8 +251,8 @@ def update_gcp_secrets_manager_secret(
     """
     client = secretmanager.SecretManagerServiceClient()
     parent = client.secret_path(project, secret_name)
-    secret_bytes = secret_value.encode('UTF-8')
-    client.add_secret_version(parent, {'data': secret_bytes})
+    secret_bytes = secret_value.encode("UTF-8")
+    client.add_secret_version(parent, {"data": secret_bytes})
 
 
 SECRET_UPDATE_DISPATCHER = {
