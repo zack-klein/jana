@@ -7,12 +7,14 @@ def read(fname):
 
 
 setup(
-    name="jabba",
+    name="jabba-secrets",
     author="Zack Klein",
     author_email="klein.zachary.j@gmail.com",
     description=("An easy way to use secrets in (several of) the cloud(s)."),
     license="MIT",
     packages=["jabba"],
     long_description=read("README.md"),
-    setup_requires=["setuptools_scm"],
+    use_scm_version=True,
+    setup_requires=['setuptools_scm'],
+    url="https://github.com/zack-klein/jabba"
 )
