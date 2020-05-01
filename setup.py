@@ -14,5 +14,7 @@ setup(
     license="MIT",
     packages=["jabba"],
     long_description=read("README.md"),
-    setup_requires=["setuptools_scm"],
+    use_scm_version=True,
+    setup_requires=['setuptools_scm'],
+    url="https://github.com/zack-klein/jabba"
 )
