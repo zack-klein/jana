@@ -1,1 +1,6 @@
-from .jabba import fetch_secret  # noqa:
+from .jabba import (  # noqa:F401
+    fetch_secret,
+    put_secret,
+    drop_secret,
+    update_secret,
+)
