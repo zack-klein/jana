@@ -1,8 +1,5 @@
 """
-Jabba is a simple, no-nonsense way to store and fetch secrets in the cloud.
-
-Each different environment for storing secrets is considered a Secret Provider,
-with all Secret Providers deriving from the BaseSecretProvider class.
+Jabba is a simple, no-nonsense way to CRUD secrets in the cloud.
 """
 
 import base64
@@ -119,7 +116,56 @@ def put_secret(provider_service, *args, **kwargs):
         raise NotImplementedError(
             f"Provider-Service combination: '{provider_service}' is not "
             "supported! Currently supported for fetching secrets are: "
-            f"{', '.join(list(SECRET_FETCH_DISPATCHER.keys()))}"
+            f"{', '.join(list(SECRET_PUT_DISPATCHER.keys()))}"
+        )
+
+    secret = fetch_function(*args, **kwargs)
+
+    return secret
+
+
+def drop_aws_secrets_manager_secret(
+    secret_name, region="us-east-1", **drop_secret_args
+):
+    """
+    Delete a secret from AWS Secrets Manager.
+
+    :param str secret_name: Name of the secret.
+    :param str region: AWS Region.
+    """
+    session = boto3.session.Session()
+    client = session.client(service_name="secretsmanager", region_name=region)
+    client.delete_secret(
+        SecretId=secret_name,
+        **delete_secret_args,
+    )
+
+
+SECRET_DELETE_DISPATCHER = {
+    "aws-secretsmanager": delete_aws_secrets_manager_secret,
+}
+
+
+def delete_secret(provider_service, *args, **kwargs):
+    """
+    Dispatch to a specific provider/service combination function for deleting
+    secrets.
+
+    :param str provider_service: The combination of provider and service in the
+        format <provider>-<service>. For example: aws-secrecretsmanager,
+        gcp-secretmanager.
+    :param args: Arbitrary positional args to pass to the dispatched function.
+    :param kwargs: Arbitrary key-value args to pass to the dispatched function.
+    :raise NotImplementedError: If a function for the provider_service is
+        invalid, it raises this error.
+    """
+    fetch_function = SECRET_DELETE_DISPATCHER.get(provider_service)
+
+    if not fetch_function:
+        raise NotImplementedError(
+            f"Provider-Service combination: '{provider_service}' is not "
+            "supported! Currently supported for fetching secrets are: "
+            f"{', '.join(list(SECRET_DELETE_DISPATCHER.keys()))}"
         )
 
     secret = fetch_function(*args, **kwargs)

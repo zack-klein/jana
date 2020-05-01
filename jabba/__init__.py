@@ -1,1 +1,1 @@
-from .jabba import fetch_secret, put_secret  # noqa:
+from .jabba import fetch_secret, put_secret, delete_secret  # noqa:
