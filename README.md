@@ -8,9 +8,11 @@ TODO
 
 # Usage
 
-Jabba exposes 2 high level functions:
+Jabba exposes the following high level functions for secret management:
   - `fetch_secret`
   - `put_secret`
+  - `drop_secret`
+  - `update_secret`
 
 Fetching secrets:
 ```python
