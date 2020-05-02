@@ -5,6 +5,10 @@
 
 [Named after the Roman goddess of secrets](https://en.wikipedia.org/wiki/Janus), Jana is a tool for secret management built for lazy people - it's an easy way to CRUD secrets across (several of) the cloud(s).
 
+# Supported Platforms:
+- GCP (Google Cloud Platform Secret Manager)
+- AWS (AWS Secrets Manager)
+
 # Installation
 
 ```bash
