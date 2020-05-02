@@ -1,5 +1,5 @@
 """
-Jabba is a simple, no-nonsense way to CRUD secrets in the cloud.
+Jana is a simple, no-nonsense way to CRUD secrets in the cloud.
 """
 
 import base64
@@ -7,9 +7,8 @@ import boto3
 
 from google.cloud import secretmanager
 
+
 # Functions for fetching existing secrets.
-
-
 # AWS
 def fetch_aws_secrets_manager_secret(secret_name, region="us-east-1"):
     """
