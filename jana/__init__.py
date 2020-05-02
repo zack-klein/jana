@@ -1,4 +1,4 @@
-from .jabba import (  # noqa:F401
+from .jana import (  # noqa:F401
     fetch_secret,
     put_secret,
     drop_secret,
