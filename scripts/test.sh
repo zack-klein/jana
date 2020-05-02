@@ -1,7 +1,7 @@
 set -e
 
 echo "Testing source code..."
-coverage run -m unittest
+coverage run --source=jana -m unittest
 coverage report
 
 echo "Testing pip..."
