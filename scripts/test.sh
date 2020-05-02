@@ -1,5 +1,9 @@
 set -e
 
+echo "Testing source code..."
+coverage run -m unittest
+coverage report
+
 echo "Testing pip..."
 pip check
 
