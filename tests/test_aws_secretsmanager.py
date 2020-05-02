@@ -2,8 +2,6 @@ import unittest
 
 from unittest.mock import patch
 
-import jana
-
 from jana import aws_secretsmanager
 
 
@@ -14,7 +12,9 @@ class TestJana(unittest.TestCase):
 
     @patch("jana.aws_secretsmanager.base64")
     @patch("jana.aws_secretsmanager.boto3")
-    def test_fetch_secret_calls_get_secret_value(self, boto3_mock, base64_mock):
+    def test_fetch_secret_calls_get_secret_value(
+        self, boto3_mock, base64_mock
+    ):
         fake_sm = boto3_mock.session.Session().client(
             service_name="secretsmanager", region_name="us-west-1"
         )
@@ -35,7 +35,6 @@ class TestJana(unittest.TestCase):
             Name=self.secret_name, SecretString=self.secret_value, foo="bar"
         )
 
-
     @patch("jana.aws_secretsmanager.boto3")
     def test_drop_secret_calls_delete_secret(self, boto3_mock):
         fake_sm = boto3_mock.session.Session().client(
@@ -54,8 +53,10 @@ class TestJana(unittest.TestCase):
             service_name="secretsmanager", region_name="us-east-1"
         )
         aws_secretsmanager.update_aws_secrets_manager_secret(
-            self.secret_name, self.secret_value, foo='bar'
+            self.secret_name, self.secret_value, foo="bar"
         )
         fake_sm.update_secret.assert_called_with(
-            SecretId=self.secret_name, SecretString=self.secret_value, foo="bar"
+            SecretId=self.secret_name,
+            SecretString=self.secret_value,
+            foo="bar",
         )
