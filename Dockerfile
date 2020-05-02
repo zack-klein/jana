@@ -17,7 +17,7 @@ COPY requirements.txt /home/debian/requirements.txt
 RUN pip install --upgrade pip && \
     pip install --upgrade -r /home/debian/requirements.txt
 
-WORKDIR /home/debian/jabba
+WORKDIR /home/debian/jana
 
 # Customize more here!
 

@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  jabba:
+  jana:
     build: .
     command: bash
     environment:
@@ -8,4 +8,4 @@ services:
     volumes:
       - ${HOME}/.aws:/home/debian/.aws  # AWS Creds
       - ${HOME}/.config/gcloud:/home/debian/.config/gcloud  # GCloud Creds
-      - ./:/home/debian/jabba  # This dir to workdir
+      - ./:/home/debian/jana  # This dir to workdir
