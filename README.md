@@ -93,3 +93,5 @@ Contributions are welcome! This repository ships with a development environment 
 ```bash
 docker-compose run --rm jana
 ```
+
+Commit style follows [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
