@@ -87,13 +87,9 @@ Updating secrets:
 ...)
 ```
 
-# Development
+# Development/Contributing
 
-Development starts by running:
+Contributions are welcome! This repository ships with a development environment that you can start by running:
 ```bash
 docker-compose run --rm jana
 ```
-
-# CI
-
-TODO
