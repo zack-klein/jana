@@ -9,6 +9,17 @@ def read(fname):
 with open("requirements.txt") as f:
     requirements = f.readlines()
 
+
+aws = ["boto3"]
+gcp = ["google-cloud-secret-manager"]
+
+
+EXTRAS_REQUIREMENTS = {
+    "all": aws + gcp,
+    "aws": aws,
+    "gcp": gcp,
+}
+
 setup(
     name="jana",
     author="Zack Klein",
@@ -20,6 +31,7 @@ setup(
     long_description_content_type="text/markdown",
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
+    extras_require=EXTRAS_REQUIREMENTS,
     url="https://github.com/zack-klein/jana",
     install_requires=requirements,
 )
