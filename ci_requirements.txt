@@ -1,0 +1,7 @@
+awscli
+flake8
+black
+bandit
+chronos-cli
+coverage
+codecov
