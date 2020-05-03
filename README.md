@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/zack-klein/jana.svg?branch=master)](https://travis-ci.com/zack-klein/snowbird) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
 
 
-[Named after the Roman goddess of secrets](https://en.wikipedia.org/wiki/Janus), Jana is a tool for secret management built for lazy people - it's an easy way to CRUD secrets across (several of) the cloud(s).
+[Named after the Roman goddess of secrets](https://en.wikipedia.org/wiki/Janus), Jana is a tool for secret management built for lazy people - it's an easy way to CRUD secrets across (several of) the cloud(s). The goal is to provide a consistent experience for using secrets, regardless of which "backend" cloud provider you're using.
 
 # Supported Platforms:
 - GCP (Google Cloud Platform Secret Manager)
@@ -12,7 +12,11 @@
 # Installation
 
 ```bash
-pip install jana
+# For AWS:
+pip install jana[aws]
+
+# For GCP
+pip install jana[gcp]
 ```
 
 # Usage
