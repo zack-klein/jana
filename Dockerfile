@@ -11,10 +11,14 @@ RUN apt-get update && \
   apt-get update && \
   apt-get install -y google-cloud-sdk
 
+COPY ci_requirements.txt /home/debian/ci_requirements.txt
+COPY provider_requirements.txt /home/debian/provider_requirements.txt
 COPY requirements.txt /home/debian/requirements.txt
 
 # Python packages
 RUN pip install --upgrade pip && \
+    pip install --upgrade -r /home/debian/ci_requirements.txt && \
+    pip install --upgrade -r /home/debian/provider_requirements.txt && \
     pip install --upgrade -r /home/debian/requirements.txt
 
 WORKDIR /home/debian/jana
