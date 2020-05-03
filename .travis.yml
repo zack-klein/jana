@@ -5,11 +5,12 @@ branches:
 services:
 - docker
 install:
-- pip install -r requirements.txt
+- pip install -r ci_requirements.txt
 - pip install twine
 script:
 - set -e
 - bash scripts/test.sh
+- codecov
 - git tag $(chronos infer) -a -m "[ci skip] Generated tag $(chronos infer) for build
   $TRAVIS_BUILD_NUMBER"
 - git push https://$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG.git --tags
