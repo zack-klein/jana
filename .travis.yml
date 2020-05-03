@@ -6,7 +6,7 @@ services:
 - docker
 install:
 - pip install -r ci_requirements.txt
-- pip install twine
+- pip install -r provider_requirements.txt
 script:
 - set -e
 - bash scripts/test.sh
