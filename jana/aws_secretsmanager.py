@@ -1,7 +1,27 @@
-import boto3
 import base64
 
 
+def setup_aws(func):
+    """
+    Decorator for ensuring the right extensions are installed.
+    """
+
+    def inner(*args, **kwargs):
+        try:
+            import boto3
+
+            global boto3
+            response = func(*args, **kwargs)
+        except ImportError:
+            raise ImportError(
+                "You must install jana[aws] to use this function!"
+            )
+        return response
+
+    return inner
+
+
+@setup_aws
 def fetch_aws_secrets_manager_secret(secret_name, region="us-east-1"):
     """
     Grab a secret from AWS Secrets Manager.
@@ -21,6 +41,7 @@ def fetch_aws_secrets_manager_secret(secret_name, region="us-east-1"):
     return secret
 
 
+@setup_aws
 def put_aws_secrets_manager_secret(
     secret_name, secret_value, region="us-east-1", **create_secret_args
 ):
@@ -40,6 +61,7 @@ def put_aws_secrets_manager_secret(
     )
 
 
+@setup_aws
 def drop_aws_secrets_manager_secret(
     secret_name, region="us-east-1", **drop_secret_args
 ):
@@ -58,6 +80,7 @@ def drop_aws_secrets_manager_secret(
     )
 
 
+@setup_aws
 def update_aws_secrets_manager_secret(
     secret_name, secret_value, region="us-east-1", **update_secret_args
 ):

@@ -1,6 +1,24 @@
-from google.cloud import secretmanager
+def setup_gcp(func):
+    """
+    Decorator for ensuring the right extensions are installed.
+    """
+
+    def inner(*args, **kwargs):
+        try:
+            from google.cloud import secretmanager
+
+            global secretmanager
+            response = func(*args, **kwargs)
+        except ImportError:
+            raise ImportError(
+                "You must install jana[gcp] to use this function!"
+            )
+        return response
+
+    return inner
 
 
+@setup_gcp
 def fetch_gcp_secret_manager_secret(secret_name, project, secret_version):
     """
     Fetch a secret from GCP Secret Manager.
@@ -17,6 +35,7 @@ def fetch_gcp_secret_manager_secret(secret_name, project, secret_version):
     return secret
 
 
+@setup_gcp
 def put_gcp_secret_manager_secret(secret_name, secret_value, project):
     """
     Create a secret in GCP Secret Manager. See:
@@ -36,6 +55,7 @@ def put_gcp_secret_manager_secret(secret_name, secret_value, project):
     client.add_secret_version(secret_parent, {"data": secret_bytes})
 
 
+@setup_gcp
 def drop_gcp_secret_manager_secret(secret_name, project):
     """
     Drop a secret from GCP Secret Manager.
@@ -48,6 +68,7 @@ def drop_gcp_secret_manager_secret(secret_name, project):
     client.delete_secret(name)
 
 
+@setup_gcp
 def update_gcp_secret_manager_secret(secret_name, secret_value, project):
     """
     Update a secret in GCP Secret Manager.
