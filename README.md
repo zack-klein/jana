@@ -1,6 +1,6 @@
 # Jana
 
-[![Build Status](https://travis-ci.com/zack-klein/jana.svg?branch=master)](https://travis-ci.com/zack-klein/snowbird) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/) [![codecov](https://codecov.io/gh/zack-klein/jana/branch/master/graph/badge.svg)](https://codecov.io/gh/zack-klein/jana)
+![Tag](https://img.shields.io/github/v/tag/zack-klein/jana.svg) [![Build Status](https://travis-ci.com/zack-klein/jana.svg?branch=master)](https://travis-ci.com/zack-klein/snowbird) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/) [![codecov](https://codecov.io/gh/zack-klein/jana/branch/master/graph/badge.svg)](https://codecov.io/gh/zack-klein/jana)
 
 
 [Named after the Roman goddess of secrets](https://en.wikipedia.org/wiki/Janus), Jana is a tool for secret management built for lazy people - it's an easy way to CRUD secrets across (several of) the cloud(s). The goal is to provide a consistent experience for using secrets, regardless of which "backend" cloud provider you're using.
@@ -17,7 +17,12 @@ pip install jana[aws]
 
 # For GCP
 pip install jana[gcp]
+
+# For the whole enchilada...
+pip install jana[all]
 ```
+
+**NOTE:** Jana tries to be flexible with your Python dependencies. If you're only using AWS, for example, you don't care about using the GCP parts of Jana -- and adding the Google Cloud SDK for Python may introduce breaking changes with some of your other Python dependencies (see: [The Nine Circles of Python Dependency Hell](https://medium.com/knerd/the-nine-circles-of-python-dependency-hell-481d53e3e025)). Therefore, the dependencies for a certain function are only imported at runtime
 
 # Usage
 
