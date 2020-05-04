@@ -1,4 +1,2 @@
-# AWS
 boto3
-# GCP
 google-cloud-secret-manager
