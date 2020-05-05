@@ -11,6 +11,8 @@
 
 # Installation
 
+**NOTE:** Not yet available on pip! Coming soon.
+
 ```bash
 # For AWS:
 pip install jana[aws]
