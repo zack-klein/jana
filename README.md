@@ -3,6 +3,12 @@
 [![Build Status](https://travis-ci.com/zack-klein/jana.svg?branch=master)](https://travis-ci.com/zack-klein/snowbird) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/) [![codecov](https://codecov.io/gh/zack-klein/jana/branch/master/graph/badge.svg)](https://codecov.io/gh/zack-klein/jana)
 
 
+:warning: **WARNING:** I'm no longer actively maintaining this library, I ended up not needing it as much as I thought I would. You can still it install it from the test instance of PyPi:
+
+```bash
+pip install -i https://test.pypi.org/simple/ jana
+```
+
 [Named after the Roman goddess of secrets](https://en.wikipedia.org/wiki/Janus), Jana is a tool for secret management built for lazy people - it's an easy way to CRUD secrets across (several of) the cloud(s). The goal is to provide a consistent experience for using secrets, regardless of which "backend" cloud provider you're using.
 
 # Supported Platforms:
@@ -12,11 +18,7 @@
 # Installation
 
 ```bash
-# For AWS:
-pip install jana[aws]
-
-# For GCP
-pip install jana[gcp]
+pip install -i https://test.pypi.org/simple/ jana
 ```
 
 # Usage
